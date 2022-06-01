@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Products
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Products</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <ion-card lines="insert" *ngFor="let product of products">
+      <ion-card-header>
+          <ion-label class="form-control">R {{product.productPrice }} </ion-label><br>
+          <ion-label class="prod-Name" > {{product.productName}} </ion-label>
+      </ion-card-header>    
+      <ion-card-content>
+        <ion-label class="form-control"> {{product.productDescription}}   </ion-label>      
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked">Quantity</ion-label>
+              <ion-input type="number" min="1"  class="form-control" (click)="onQuantityUpdate(product.productId,$event)" value="{{product.quantity}}"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-button type="submit" (click)="onSubmit(product)" >
+              <ion-icon name="basket-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+    </ion-card-content>
+    
+  </ion-card>
+
+</ion-content>
